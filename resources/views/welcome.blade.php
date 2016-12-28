@@ -2,9 +2,6 @@
 <html>
     <head>
         <title>Laravel</title>
-
-        
-
         <style>
             html, body {
                 height: 100%;
@@ -38,7 +35,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Laravel 啊实打实大</div>
             </div>
         </div>
     </body>
