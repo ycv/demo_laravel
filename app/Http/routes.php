@@ -18,11 +18,11 @@ Route::get('/', function () {
 
 
 
-//Route::get('query1', ['uses' => 'Student\StudentController@query1']);
+//Route::get('query1', ['uses' => 'Student\StudentController@DemoQueryBuilder']);
 //Route::any('test', [ 'uses' => 'Student\StudentController@EcologicalOperationTable']);
 //设置 Student 中路由
 Route::group(['namespace' => 'Student'], function() {
-    Route::get('stquery1', ['uses' => 'StudentController@query1']);
+    Route::get('stquery1', ['uses' => 'StudentController@DemoQueryBuilder']);
     Route::any('sttest', [ 'uses' => 'StudentController@EcologicalOperationTable']);
 });
 

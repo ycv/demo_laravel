@@ -27,7 +27,7 @@ class StudentController extends StcommonController {
     /**
      * 查询构造器 
      */
-    public function query1() {
+    public function DemoQueryBuilder() {
         /**
          * 添加
          */
@@ -76,9 +76,32 @@ class StudentController extends StcommonController {
          * get()    first()     where()     pluck()
          * lists()      select()    chunk()
          */
-        echo "xz";
-        die;
-        //dd($q1);
+        // get() 获取表的所有数据
+        //$q1 = DB::table("demolaravel_student")->get();
+        //first() 返回一条记录(默认第一条)
+        //$q1 = DB::table("demolaravel_student")->first();
+//        $q1 = DB::table("demolaravel_student")->orderBy("id", "desc")->first();
+        // where() 
+//        $q1 = DB::table("demolaravel_student")->where("id", ">=", 4)->get();
+//        $q1 = DB::table("demolaravel_student")->whereRaw("id >= ? and age > ?", [4, 16])->get();
+        //pluck() 返回结果集 指定的字段  一个字段
+//        $q1 = DB::table("demolaravel_student")->pluck('name');
+//        $q1 = DB::table("demolaravel_student")->whereRaw("id >= ? and age > ?", [4, 16])->pluck('name');
+        //lists 返回结果集 指定的字段 一个字段  可以指定某个字段 为下标
+        //$q1 = DB::table("demolaravel_student")->lists('name');
+        //$q1 = DB::table("demolaravel_student")->lists('name', "id"); //指定id为下标 (key)    id 是key ; name 是value
+        //select  返回结果集 指定的字段 可以是多个字段
+//        $q1 = DB::table("demolaravel_student")->select("name", "age", "grade")->get();
+        //chunk 分段获取数据    大数据 实用
+        echo "<pre>";
+        DB::table("demolaravel_student")->chunk(2, function($ss) {
+            print_r($ss);
+            //return false;     //可以终止查询
+            //if("满足条件"){return false;} //满足条件  可以跳出查询
+        });
+
+
+//        dd($q1);
     }
 
 }
