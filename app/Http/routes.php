@@ -21,9 +21,14 @@ Route::get('/', function () {
 //Route::get('query1', ['uses' => 'Student\StudentController@DemoQueryBuilder']);
 //Route::any('test', [ 'uses' => 'Student\StudentController@EcologicalOperationTable']);
 //设置 Student 中路由
-Route::group(['namespace' => 'Student'], function() {
+//Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace'=>'Admin'], function () {
+//加前缀 、 命名空间
+Route::group(['prefix' => 'ttt', 'namespace' => 'Student'], function() {
     Route::get('stquery1', ['uses' => 'StudentController@DemoQueryBuilder']);
     Route::any('sttest', [ 'uses' => 'StudentController@EcologicalOperationTable']);
+    Route::any('sttest2', [ 'uses' => 'StudentController@DemoQueryAggregate']);
+    Route::any('demoorm1', [ 'uses' => 'StudentController@DemoORMTest1']);
+    Route::any('demoorm2', [ 'uses' => 'StudentController@DemoORMTest2']);
 });
 
 

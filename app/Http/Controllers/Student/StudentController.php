@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use \Illuminate\Support\Facades\DB;
+use App\Http\Model\Student;
 
 class StudentController extends StcommonController {
 
@@ -102,6 +103,73 @@ class StudentController extends StcommonController {
 
 
 //        dd($q1);
+    }
+
+    /**
+     *  构造器 中 聚合函数
+     * count() max() min() avg() sum()
+     */
+    public function DemoQueryAggregate() {
+        //统计表中记录数
+        //$q1 = DB::table("demolaravel_student")->count();
+        //返回 字段最大值
+        //$q1 = DB::table("demolaravel_student")->max('age');
+        //返回 字段最小值
+        //$q1 = DB::table("demolaravel_student")->min('age');
+        //平均数
+        $q1 = DB::table("demolaravel_student")->avg('age');
+        //和
+        //$q1 = DB::table("demolaravel_student")->sum('age');
+        dd($q1);
+    }
+
+    public function DemoORMTest1() {
+        //返回 一个集合
+        //$s = Student::all();
+        //根据主键查询
+        //$s = Student::find(3);
+        //根据主键查找 没找到抛出异常
+        //$s = Student::findOrFail(3);
+//        $s = Student::get();
+        //作用等同于 find()
+        //$s = Student::where("id", ">", '7')->orderBy("age", "desc")->first();
+        //$s = Student::where("id", ">", '7')->orderBy("age", "desc")->get();
+//        echo "<pre>";
+//        Student::chunk(2, function($cs) {
+//            print_r($cs);
+//        });
+//        
+//        $s = Student::count();
+        $s = Student::where("id", "<", 9)->max("age");
+        dd($s);
+    }
+
+    public function DemoORMTest2() {
+        //使用模型新增数据
+//        $ss = new Student();
+//        $ss->name = "张子看";
+//        $ss->age = "19";
+//        $ss->grade = "六年级";
+//        $ss->addtime = time();
+        //返回值是布尔值
+        //$sav = $ss->save();
+//        $s1 = Student::find(15);
+//        echo $s1->addtime;
+        //使用模型的create方法新增数据
+//        $s1 = Student::create(
+//                        ['name' => '按时33', 'age' => 18, 'addtime' => time()]
+//        );
+        //firstOrCreate 以属性查找数据 若没有 则新增数据，并取得新增的实例
+//        $s1 = Student::firstOrCreate(
+//                        ['name' => '按时3344']
+//        );
+        //firstOrNew 以属性查找数据 若没有 则新增实例,但不入库，需要数据入库 要添加save()方法
+        $s1 = Student::firstOrNew(
+                        ['name' => '按时3344']
+        );
+        //返回布尔值
+        $s21 = $s1->save();
+        dd($s21);
     }
 
 }
