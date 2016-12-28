@@ -164,12 +164,30 @@ class StudentController extends StcommonController {
 //                        ['name' => '按时3344']
 //        );
         //firstOrNew 以属性查找数据 若没有 则新增实例,但不入库，需要数据入库 要添加save()方法
-        $s1 = Student::firstOrNew(
-                        ['name' => '按时3344']
-        );
+//        $s1 = Student::firstOrNew(
+//                        ['name' => '按时3344']
+//        );
         //返回布尔值
-        $s21 = $s1->save();
-        dd($s21);
+//        $s21 = $s1->save();
+        //使用模型更新数据 如果$timestamps = true 会自动更新updated_at 字段
+//        $s1 = Student::find(20);
+//        $s1->name = "kikyt";
+//        //返回布尔值
+//        $s1s = $s1->save();
+        //批量更新 返回更新的行数  没有更新的话 返回0
+//        $s1s = Student::where("id", ">", 14)->update(['age' => 16, 'grade' => "五年级"]);
+        //通过模型 删除
+//        $s1 = Student::find(7);
+//        //返回布尔值  没有删除数据 报异常
+//        $s1s = $s1->delete();
+        //通过主键 删除
+        //返回删除条数 没有删除数据 返回0
+//        $s1s = Student::destroy(7);
+//        $s1s = Student::destroy(12, 11);
+//        $s1s = Student::destroy([7, 8]);
+        //指定条件删除 返回删除条数， 没有数据 返回0
+        $s1s = Student::where('id', '=', 16)->delete();
+        dd($s1s);
     }
 
 }
