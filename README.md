@@ -1,5 +1,7 @@
 laravel目录介绍
 
+
+
 /app        应用程序的核心代码
 /app/Http   业务逻辑代码(自己写的)
 /bootstrap  框架启动、自动加载配置的文件
